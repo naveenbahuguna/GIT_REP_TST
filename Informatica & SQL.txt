@@ -1,0 +1,78 @@
+Difference between Function and Procedure.
+------------------------------------------
+1. Function is mainly used in the case where it must return a value. Where as a procedure may or may not return a value or may return more than one value using the OUT parameter.
+ 
+2. Function can be called from SQL statements where as procedure can not be called from the sql statements 
+
+3. Functions are normally used for computations where as procedures are normally used for executing business logic. 
+
+4. You can have DML (insert,update, delete) statements in a function. But, you cannot call such a function in a SQL query.
+
+5. Function returns 1 value only. Procedure can return multiple values (max 1024). 
+
+6.Stored Procedure: supports deferred name resolution. Example while writing a stored procedure that uses table named tabl1 and tabl2 etc..but actually not exists in database is allowed only in during creation but runtime throws error Function wont support deferred name resolution. 
+
+7.Stored procedure returns always integer value by default zero. where as function return type could be scalar or table or table values
+
+8. Stored procedure is precompiled execution plan where as functions are not.
+ 
+9.A procedure may modify an object where a function can only return a value The RETURN statement immediately completes the execution of a subprogram and returns control to the caller. 
+
+Types of session partitions:
+----------------------------
+Database partitioning:
+The Integration Service queries the database system for table partition information. It reads partitioned data from the corresponding nodes in the database.
+
+We can define up to 64 partitions at any partition point in a pipeline
+
+Pass-through:
+The Integration Service processes data without redistributing rows among partitions. All rows in a single partition stay in the partition after crossing a pass-through partition point. Choose pass-through partitioning when we want to create an additional pipeline stage to improve performance, but do not want to change the distribution of data across partitions.
+
+Round-robin:
+The Integration Service distributes data evenly among all partitions. Use round-robin partitioning where we want each partition to process approximately the same numbers of rows i.e. load balancing.
+
+Hash auto-keys:
+The Integration Service uses a hash function to group rows of data among partitions. The Integration Service groups the data based on a partition key. The Integration Service uses all grouped or sorted ports as a compound partition key. We may need to use hash auto-keys partitioning at Rank, Sorter, and unsorted Aggregator transformations.
+
+Hash user keys:
+The Integration Service uses a hash function to group rows of data among partitions. We define the number of ports to generate the partition key.
+
+Key range:
+The Integration Service distributes rows of data based on a port or set of ports that we define as the partition key. For each port, we define a range of values. The Integration Service uses the key and ranges to send rows to the appropriate partition. Use key range partitioning when the sources or targets in the pipeline are partitioned by key range.
+
+
+What is NoSQL
+-------------
+NoSQL is not the name of any particular database instead it refers to a broad class of non-relational databases that differ from classical relational database management systems (RDBMS) in some significant aspects, most notably because they do not use SQL as their primary query language, instead providing access by means of Application Programming Interfaces (API).
+
+NoSQL can be considered "Internet age" databases that are being used by Amazon, Facebook, Google and the like to address performance and scalability requirements that cannot be met by traditional relational databases.
+
+One major difference between traditional relational databases and NoSQL is that the latter do not generally provide guarantees for atomicity, consistency, isolation and durability (commonly known as ACID property), although some support is beginning to emerge. Instead of ACID, NoSql databases more or less follow something called "BASE".
+
+The other major difference is, NoSQL databases are generally schema-less - that is records in these databases do not require to conform to a pre-defined storage schema.
+
+-----------------
+
+Informatica command line objects/programs:
+------------------------------------------
+Informatica includes the following command line programs:
+1.infacmd. Use infacmd to access the Informatica application services.
+2.infasetup. Use infasetup to complete installation tasks such as defining a node or a domain.
+3.pmcmd. Use pmcmd to manage workflows. You can start, stop, schedule, and monitor workflows using pmcmd.
+4.pmrep. Use pmrep to complete repository administration tasks such as listing repository objects, creating and editing groups, and restoring and deleting repositories.
+pmcmd example:
+cd C:\Informatica\9.0.1\server\bin\
+ 
+pmcmd  startworkflow -sv PROD_INTEG -d Domain_INFORMATICA   -u "Administrator" -p "Administrator" -f "FOLDER_NAME" wf_m_JOBS_ALL
+ 
+pmrep example:
+backupproduction.bat
+REM This batch file uses pmrep to connect to and back up the repository Production on the server
+ServerName
+@echo off
+echo Connecting to repository Production...
+Using pmrep 611
+c:\PowerCenter\pmrep\pmrep connect -r Production -n Administrator -x Adminpwd -d MyDomain -h
+Machine -o 8080
+echo Backing up repository Production...
+c:\PowerCenter\pmrep\pmrep backup -o c:\backup\Production_backup.rep
