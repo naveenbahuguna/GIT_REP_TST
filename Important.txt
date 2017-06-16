@@ -1,0 +1,44 @@
+Oracle 11g
+**********************************************
+
+Global DB Instance Name : Oracleinfa123
+
+Password : Oracleinfa123
+
+User 1: infaadmin 
+
+Pwd: infaadmin
+
+User 2: infarep
+
+Pwd: infarep
+
+*******************************************
+
+Server Installation 
+
+Encryption Key : Infaadmin123
+
+Informatica Admin Console
+
+username: administrator
+
+Pwd : administrator
+
+
+Client Installation
+*****************************************
+
+Encryption Key : Infaadmin123
+
+Informatica Admin Console
+
+username: administrator
+
+Pwd : administrator
+------------------------------------------
+
+Domain: Domain_Eshan-PC-gf96
+host: Eshan-PC-gf96
+Node: node01_Eshan-PC-GF96
+port: 6005

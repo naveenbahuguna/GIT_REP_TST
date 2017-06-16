@@ -1,0 +1,22 @@
+1. NULL values in Sorter transformation:
+
+Null Treated Low: Enable the property, to treat null values as lower when performing the sort operation. When disabled, the integration service treats the null values as higher than any other value.
+
+2. Error Handling Functions
+
+We can use two functions provided by Informatica PowerCenter to define our user defined error capture logic.
+
+a. ERROR() : This function Causes the PowerCenter Integration Service to skip a row and issue an error message, which you define. The error message displays in the session log or written to the error log tables based on the error logging type configuration in the session.
+
+You can use ERROR in Expression transformations to validate data. Generally, you use ERROR within an IIF or DECODE function to set rules for skipping rows.
+
+Eg : IIF(TRANS_DATA > SYSDATE,ERROR('Invalid Transaction Date'))
+Above expression raises an error and drops any record whose transaction data is greater than the current date from the ETL process and the target table.
+
+b. ABORT() : Stops the session, and issues a specified error message to the session log file or written to the error log tables based on the error logging type configuration in the session. When the PowerCenter Integration Service encounters an ABORT function, it stops transforming data at that row. It processes any rows read before the session aborts.
+
+You can use ABORT in Expression transformations to validate data.
+Eg : IIF(ISNULL(LTRIM(RTRIM(CREDIT_CARD_NB))),ABORT('Empty Credit Card Number'))
+
+Above expression aborts the session if any one of the transaction records are coming with out a credit card number.
+
